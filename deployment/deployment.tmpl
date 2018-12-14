@@ -13,11 +13,10 @@ spec:
     spec:
       containers:
         - name: adjust-tz
-          image: hub.ppmoney.io/getting-started/mutating-webhook-demo:latest
+          image: ${IMAGE}
           args:
             - --tls-cert-file=/etc/webhook/certs/cert.pem
             - --tls-private-key-file=/etc/webhook/certs/key.pem
-            - --v=4
           volumeMounts:
             - name: webhook-certs
               mountPath: /etc/webhook/certs

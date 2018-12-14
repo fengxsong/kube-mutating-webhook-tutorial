@@ -1,6 +1,6 @@
 # Gopkg.toml example
 #
-# Refer to https://golang.github.io/dep/docs/Gopkg.toml.html
+# Refer to https://github.com/golang/dep/blob/master/docs/Gopkg.toml.md
 # for detailed Gopkg.toml documentation.
 #
 # required = ["github.com/user/thing/cmd/thing"]
@@ -26,22 +26,35 @@
 
 
 [[constraint]]
-  branch = "master"
-  name = "github.com/golang/glog"
+  name = "github.com/ghodss/yaml"
+  version = "1.0.0"
 
 [[constraint]]
+  name = "github.com/spf13/pflag"
+  version = "1.0.3"
+
+[[override]]
   name = "k8s.io/api"
-  branch = "release-1.9"
+  # revision for tag "kubernetes-1.12.3"
+  revision = "b503174bad5991eb66f18247f52e41c3258f6348"
 
-[[constraint]]
+[[override]]
   name = "k8s.io/apimachinery"
-  branch = "release-1.9"
+  # revision for tag "kubernetes-1.12.3"
+  revision = "eddba98df674a16931d2d4ba75edc3a389bf633a"
+
+[[override]]
+  name = "k8s.io/kubernetes"
+  revision = "435f92c719f279a3a67808c80521ea17d5715c66"
+
+[[override]]
+  name = "k8s.io/apiserver"
+  version = "kubernetes-1.12.3"
+
+[[override]]
+  name = "k8s.io/apiextensions-apiserver"
+  version = "kubernetes-1.12.3"
 
 [prune]
   go-tests = true
   unused-packages = true
-
-# Fix: vendor/k8s.io/kubernetes/pkg/util/parsers/parsers.go:36:16: undefined: reference.ParseNormalizedNamed
-[[override]]
-  name = "github.com/docker/distribution"
-  branch = "master"
